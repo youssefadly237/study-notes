@@ -1,18 +1,16 @@
-# for a description of available keys, see https://github.com/typst/packages/?tab=readme-ov-file#package-format
-
 [package]
-name = ""
+name = "study-notes"
 version = "0.1.0"
 entrypoint = "src/lib.typ"
-authors = []
-license = "Unlicense"
-description = ""
+authors = ["J. Adly <youssefadly237@gmail.com>"]
+license = "MIT-0"
+description = "a template for making nicely formatted notes"
 homepage = ""
-repository = ""
-keywords = []
-categories = []
-disciplines = []
-# compiler = ""
+repository = "https://github.com/youssefadly237/study-notes"
+keywords = ["notes", "academic", "template", "mcq", "study"]
+categories = ["layout"]
+disciplines = ["education"]
+compiler = "0.12.0"
 exclude = [
   ".github",
   "docs",
@@ -24,10 +22,7 @@ exclude = [
   "thumbnail-light.svg",
 ]
 
-# [template]
-# path = "template"
-# entrypoint = "main.typ"
-# thumbnail = "thumbnail.png"
-
-# [tool.mytool]
-# foo = "bar"
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"

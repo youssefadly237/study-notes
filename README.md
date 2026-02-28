@@ -1,69 +1,107 @@
-# The `my-package` Package
+# The `study-notes` Package
+
 <div align="center">Version 0.1.0</div>
 
-A short description about the project and/or client.
-
-## Template adaptation checklist
-
-- [ ] Fill out `README.md`
-  - Change the `my-package` package name, including code snippets
-  - Check section contents and/or delete sections that don't apply
-- [ ] Check and/or replace `LICENSE` by something that suits your needs
-- [ ] Fill out `typst.toml`
-  - See also the [typst/packages README](https://github.com/typst/packages/?tab=readme-ov-file#package-format)
-- [ ] Adapt Repository URLs in `CHANGELOG.md`
-  - Consider only committing that file with your first release, or removing the "Initial Release" part in the beginning
-- [ ] Adapt or deactivate the release workflow in `.github/workflows/release.yml`
-  - to deactivate it, delete that file or remove/comment out lines 2-4 (`on:` and following)
-  - to use the workflow
-    - [ ] check the values under `env:`, particularly `REGISTRY_REPO`
-    - [ ] if you don't have one, [create a fine-grained personal access token](https://github.com/settings/tokens?type=beta) with [only Contents permission](https://stackoverflow.com/a/75116350/371191) for the `REGISTRY_REPO`
-    - [ ] on this repo, create a secret `REGISTRY_TOKEN` (at `https://github.com/[user]/[repo]/settings/secrets/actions`) that contains the so created token
-
-    if configured correctly, whenever you create a tag `v...`, your package will be pushed onto a branch on the `REGISTRY_REPO`, from which you can then create a pull request against [typst/packages](https://github.com/typst/packages/)
-- [ ] remove/replace the example test case
-- [ ] (add your actual code, docs and tests)
-- [ ] remove this section from the README
+A Typst template for making nicely formatted study notes with a cover page, table of contents, breadcrumb footer navigation, MCQ utilities, and more.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on the typst web app. Perhaps a short code example on importing the package and a very simple teaser usage.
+Import the package and apply the template show rule:
 
 ```typ
-#import "@preview/my-package:0.1.0": *
+#import "@preview/study-notes:0.1.0": study-notes
 
-#show: my-show-rule.with()
-#my-func()
+#show: study-notes.with(
+  title: "My Course Notes",
+  author: "Your Name",
+  email: "your.email@example.com",
+  description: "Notes for Course 101",
+  keywords: ("course", "notes"),
+  quote-text: [An inspiring quote here.],
+  quote-author: [Someone Famous],
+)
+
+= Introduction
+
+Your content here...
 ```
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./thumbnail-dark.svg">
-  <img src="./thumbnail-light.svg">
-</picture>
 
 ### Installation
 
-A step by step guide that will tell you how to get the development environment up and running. This should explain how to clone the repo and where to (maybe a link to the typst documentation on it), along with any pre-requisite software and installation steps.
+Install locally for development:
 
 ```
-$ First step
-$ Another step
-$ Final step
+$ just install
+```
+
+Or use directly from the Typst package registry:
+
+```typ
+#import "@preview/study-notes:0.1.0": study-notes
 ```
 
 ## Usage
 
-A more in-depth description of usage. Any template arguments? A complicated example that showcases most if not all of the functions the package provides? This is also an excellent place to signpost the manual.
+### Template Parameters
+
+| Parameter      | Type     | Default            | Description                                    |
+| -------------- | -------- | ------------------ | ---------------------------------------------- |
+| `title`        | content  | `[]`               | Document title (shown on cover page)           |
+| `author`       | content  | `[]`               | Author name(s)                                 |
+| `email`        | content  | `none`             | Author email (makes author name a mailto link) |
+| `description`  | content  | `[]`               | Document description for metadata              |
+| `keywords`     | array    | `()`               | Keyword strings for metadata                   |
+| `date`         | datetime | `datetime.today()` | Document date                                  |
+| `paper`        | str      | `"a4"`             | Paper size                                     |
+| `flipped`      | bool     | `false`            | Landscape orientation                          |
+| `quote-text`   | content  | `[]`               | Quote for closing page                         |
+| `quote-author` | content  | `[]`               | Quote attribution                              |
+| `show-toc`     | bool     | `true`             | Show table of contents                         |
+| `toc-depth`    | int      | `2`                | Depth of table of contents                     |
+
+### MCQ Utilities
+
+Create multiple choice questions:
 
 ```typ
-#import "@preview/my-package:0.1.0": *
+#import "@preview/study-notes:0.1.0": mcq, mcqs, mcq-answers
 
-#let my-complicated-example = ...
+#mcq([What is 2+2?], ([2], [3], [4], [5]))
+
+#mcqs((
+  ([What is 2+2?], ([2], [3], [4], [5])),
+  ([What is 3+3?], ([5], [6], [7], [8])),
+), title: [*Section A*])
+
+#mcq-answers(([c], [b]), columns: 2, title: [*Answers:*])
 ```
 
-## Additional Documentation and Acknowledgments
+### Lecture Headings
 
-* Project folder on server:
-* Confluence link:
-* Asana board:
-* etc...
+Auto-numbered lecture headings per subject:
+
+```typ
+#import "@preview/study-notes:0.1.0": lec
+
+#lec("Anatomy", "Oral Cavity and Pharynx")
+// Renders: "Lec. 1  Oral Cavity and Pharynx"
+
+#lec("Anatomy", "Esophagus and Stomach")
+// Renders: "Lec. 2  Esophagus and Stomach"
+```
+
+### Layout Utilities
+
+```typ
+#import "@preview/study-notes:0.1.0": matched-height-grid
+
+#matched-height-grid(
+  [Some text content on the left],
+  image("figure.png"),
+  columns: (2fr, 1fr),
+)
+```
+
+## License
+
+This project is licensed under MIT-0 - see [LICENSE](LICENSE) for details.
