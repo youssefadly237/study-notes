@@ -37,6 +37,7 @@
 /// - quote-author (content): Quote attribution. Default: `[]`
 /// - show-toc (bool): Whether to show table of contents. Default: `true`
 /// - toc-depth (int): Depth of table of contents. Default: `2`
+/// - frontmatter (content): Content between cover and TOC (preface, disclaimer). Uses Roman numeral numbering. Default: `[]`
 /// - content (content): The main document content
 /// -> content
 #let study-notes(
@@ -52,6 +53,7 @@
   quote-author: [],
   show-toc: true,
   toc-depth: 2,
+  frontmatter: [],
   content,
 ) = {
   // Document metadata
@@ -163,6 +165,8 @@
   ]
 
   pagebreak()
+
+  frontmatter
 
   // Table of Contents
   if show-toc {

@@ -1,6 +1,6 @@
 # The `study-notes` Package
 
-<div align="center">Version 0.1.0</div>
+<div align="center">Version 0.1.1</div>
 
 A Typst template for making nicely formatted study notes with a cover page, table of contents, breadcrumb footer navigation, MCQ utilities, and more.
 
@@ -9,7 +9,7 @@ A Typst template for making nicely formatted study notes with a cover page, tabl
 Import the package and apply the template show rule:
 
 ```typ
-#import "@preview/study-notes:0.1.0": study-notes
+#import "@preview/study-notes:0.1.1": study-notes
 
 #show: study-notes.with(
   title: "My Course Notes",
@@ -37,7 +37,7 @@ $ just install
 Or use directly from the Typst package registry:
 
 ```typ
-#import "@preview/study-notes:0.1.0": study-notes
+#import "@preview/study-notes:0.1.1": study-notes
 ```
 
 ## Usage
@@ -64,7 +64,7 @@ Or use directly from the Typst package registry:
 Create multiple choice questions:
 
 ```typ
-#import "@preview/study-notes:0.1.0": mcq, mcqs, mcq-answers
+#import "@preview/study-notes:0.1.1": mcq, mcqs, mcq-answers
 
 #mcq([What is 2+2?], ([2], [3], [4], [5]))
 
@@ -81,19 +81,50 @@ Create multiple choice questions:
 Auto-numbered lecture headings per subject:
 
 ```typ
-#import "@preview/study-notes:0.1.0": lec
+#import "@preview/study-notes:0.1.1": lec
 
 #lec("Anatomy", "Oral Cavity and Pharynx")
-// Renders: "Lec. 1  Oral Cavity and Pharynx"
+// Renders weak pagebreak, "Lec. 1" text, horizontal rule, level-2 heading
 
 #lec("Anatomy", "Esophagus and Stomach")
-// Renders: "Lec. 2  Esophagus and Stomach"
+// Renders weak pagebreak, "Lec. 2" text, horizontal rule, level-2 heading
+```
+
+### Section Dividers
+
+Full-page section dividers with centered title and optional mini-TOC:
+
+```typ
+#import "@preview/study-notes:0.1.1": section
+
+#section("Gastrointestinal System")
+// Full-page divider with title and mini-TOC
+
+#section("Gastrointestinal System", toc-depth: 3)
+// Includes headings up to level 3 in the mini-TOC
+
+#section("Gastrointestinal System", show-toc: false)
+// Title only, no mini-TOC
+```
+
+### Margin Notes
+
+Place a short label in the left margin aligned to the current line:
+
+```typ
+#import "@preview/study-notes:0.1.1": nb
+
+#nb[imp] This is an important note.
+
+#nb[!, shape: "square", fill: red] Warning text here.
+
+#nb[C99, shape: "circle"] Label in a circle.
 ```
 
 ### Layout Utilities
 
 ```typ
-#import "@preview/study-notes:0.1.0": matched-height-grid
+#import "@preview/study-notes:0.1.1": matched-height-grid
 
 #matched-height-grid(
   [Some text content on the left],

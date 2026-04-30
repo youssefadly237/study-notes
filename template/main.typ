@@ -1,4 +1,4 @@
-#import "@preview/study-notes:0.1.0": study-notes
+#import "@preview/study-notes:0.1.1": study-notes
 
 #show: study-notes.with(
   title: "My Study Notes",

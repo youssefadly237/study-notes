@@ -1,4 +1,4 @@
-#import "/src/lib.typ": *
+#import "../src/lib.typ": *
 
 #show: study-notes.with(
   title: "Biology 101 Notes",
@@ -10,7 +10,7 @@
   quote-author: [Neil deGrasse Tyson],
 )
 
-= Anatomy
+#section("Anatomy")
 
 #lec("Anatomy", "The Skeletal System")
 
@@ -40,7 +40,7 @@ There are three types of muscle tissue:
   [Smooth], [Walls of organs, non-striated], [No],
 )
 
-= Histology
+#section("Histology")
 
 #lec("Histology", "Epithelial Tissue")
 
@@ -66,23 +66,50 @@ Epithelial tissue lines body surfaces and cavities.
 
 = Practice Questions
 
-#mcqs((
-  ([Which bone is the longest in the human body?],
-   ([Tibia], [Femur], [Humerus], [Fibula])),
-  ([Which muscle type is involuntary and striated?],
-   ([Skeletal], [Smooth], [Cardiac], [None])),
-  ([What type of epithelium lines the alveoli?],
-   ([Simple cuboidal], [Simple squamous], [Stratified squamous], [Transitional])),
-), title: [*Section A: Multiple Choice*])
+#mcqs(
+  (
+    ([Which bone is the longest in the human body?], ([Tibia], [Femur], [Humerus], [Fibula])),
+    ([Which muscle type is involuntary and striated?], ([Skeletal], [Smooth], [Cardiac], [None])),
+    (
+      [What type of epithelium lines the alveoli?],
+      ([Simple cuboidal], [Simple squamous], [Stratified squamous], [Transitional]),
+    ),
+  ),
+  title: [*Section A: Multiple Choice*],
+)
 
 #mcq-answers(([b], [c], [b]), columns: 3, title: [*Answer Key:*])
 
 = Summary
 
-These notes covered:
+#nb[imp] These notes covered:
 + The skeletal system and bone classification
 + Muscle tissue types and their properties
 + Epithelial tissue classification
 + Practice MCQs with answer keys
 
 $ "Total bones" = 206 quad "Muscle types" = 3 $
+
+
+#section("Other", toc-depth: 4)
+
+#lec("Other", "Some fancy title")
+
+=== A section
+
+#nb[nb] This is some text
+
+
+
+==== Sub section
+
+#nb[nb] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id nisi
+aliquet, ullamcorper justo ac, porta odio. Nam sed condimentum ligula, eu
+fringilla lectus. Suspendisse tincidunt sollicitudin ligula, at ornare urna
+convallis eget. Integer auctor ornare velit ut placerat. Nunc id purus sit amet
+elit facilisis placerat. Suspendisse potenti. Donec non sapien sed ex rutrum luctus
+in nec eros. Sed accumsan tellus eget volutpat pulvinar. Maecenas varius odio eget
+erat maximus blandit. Nam quis luctus purus.
+
+#lec("Other", "Other fancy title")
+
