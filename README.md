@@ -1,6 +1,6 @@
 # The `study-notes` Package
 
-<div align="center">Version 0.1.1</div>
+<div align="center">Version 0.1.2</div>
 
 A Typst template for making nicely formatted study notes with a cover page, table of contents, breadcrumb footer navigation, MCQ utilities, and more.
 
@@ -9,7 +9,7 @@ A Typst template for making nicely formatted study notes with a cover page, tabl
 Import the package and apply the template show rule:
 
 ```typ
-#import "@preview/study-notes:0.1.1": study-notes
+#import "@preview/study-notes:0.1.2": study-notes
 
 #show: study-notes.with(
   title: "My Course Notes",
@@ -37,7 +37,7 @@ $ just install
 Or use directly from the Typst package registry:
 
 ```typ
-#import "@preview/study-notes:0.1.1": study-notes
+#import "@preview/study-notes:0.1.2": study-notes
 ```
 
 ## Usage
@@ -64,7 +64,7 @@ Or use directly from the Typst package registry:
 Create multiple choice questions:
 
 ```typ
-#import "@preview/study-notes:0.1.1": mcq, mcqs, mcq-answers
+#import "@preview/study-notes:0.1.2": mcq, mcqs, mcq-answers
 
 #mcq([What is 2+2?], ([2], [3], [4], [5]))
 
@@ -81,7 +81,7 @@ Create multiple choice questions:
 Auto-numbered lecture headings per subject:
 
 ```typ
-#import "@preview/study-notes:0.1.1": lec
+#import "@preview/study-notes:0.1.2": lec
 
 #lec("Anatomy", "Oral Cavity and Pharynx")
 // Renders weak pagebreak, "Lec. 1" text, horizontal rule, level-2 heading
@@ -95,7 +95,7 @@ Auto-numbered lecture headings per subject:
 Full-page section dividers with centered title and optional mini-TOC:
 
 ```typ
-#import "@preview/study-notes:0.1.1": section
+#import "@preview/study-notes:0.1.2": section
 
 #section("Gastrointestinal System")
 // Full-page divider with title and mini-TOC
@@ -112,7 +112,7 @@ Full-page section dividers with centered title and optional mini-TOC:
 Place a short label in the left margin aligned to the current line:
 
 ```typ
-#import "@preview/study-notes:0.1.1": nb
+#import "@preview/study-notes:0.1.2": nb
 
 #nb[imp] This is an important note.
 
@@ -124,7 +124,7 @@ Place a short label in the left margin aligned to the current line:
 ### Layout Utilities
 
 ```typ
-#import "@preview/study-notes:0.1.1": matched-height-grid
+#import "@preview/study-notes:0.1.2": matched-height-grid
 
 #matched-height-grid(
   [Some text content on the left],

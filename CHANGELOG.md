@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-07
+
+### Added
+
+- `mcq-answers` now accepts `flip` parameter for column-by-column filling
+- `lec` now accepts `prefix` and `counted` parameters for custom labels
+
+### Changed
+
+- Bumped version to 0.1.2
+
 ## [0.1.1] - 2026-04-30
 
 ### Added
@@ -31,5 +42,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Package manual
 
 [Unreleased]: https://github.com/youssefadly237/study-notes/commits/main
+[0.1.2]: https://github.com/youssefadly237/study-notes/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/youssefadly237/study-notes/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/youssefadly237/study-notes/releases/tag/v0.1.0

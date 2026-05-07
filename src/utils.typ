@@ -184,11 +184,26 @@ Utils
 /// - columns (int): Number of columns in the grid. Default: `3`
 /// - start (int): Starting number for answer numbering. Default: `1`
 /// - title (content): Optional title above answers. Default: empty
+/// - flip (bool): Fill column-by-column instead of row-by-row. Default: `false`
 /// -> content
-#let mcq-answers(answers, columns: 3, start: 1, title: []) = {
+#let mcq-answers(answers, columns: 3, start: 1, title: [], flip: false) = {
+  let count = answers.len()
+  let rows = calc.ceil(count / columns)
+  let total = rows * columns
   let items = ()
-  for idx in range(answers.len()) {
-    items.push([#numbering("1.", start + idx) #answers.at(idx)])
+  for idx in range(total) {
+    let src = if flip {
+      let col = calc.rem(idx, columns)
+      let row = calc.quo(idx, columns)
+      row + col * rows
+    } else {
+      idx
+    }
+    if src < count {
+      items.push([#numbering("1.", start + src) #answers.at(src)])
+    } else {
+      items.push([])
+    }
   }
   title
   grid(
@@ -198,6 +213,8 @@ Utils
     ..items
   )
 }
+
+
 
 /// Displays two pieces of content side-by-side with matched heights
 ///
@@ -243,13 +260,25 @@ Utils
 ///
 /// - subject (string): The subject name (e.g., "Anatomy", "Histology")
 /// - title (content or string): The lecture title
+/// - prefix (auto or string): Label shown before the counter (or as standalone text
+///   when counted is false). `auto` uses "Lec". Default: `auto`
+/// - counted (bool): Whether to show and increment the counter. Default: `true`
 /// -> content
-#let lec(subject, title) = {
+#let lec(subject, title, prefix: auto, counted: true) = {
   let lec-counter = counter("lec-" + subject)
-  lec-counter.step()
+  let resolved-prefix = if prefix == auto { "Lec" } else { prefix }
+
+  if counted {
+    lec-counter.step()
+  }
+
   pagebreak(weak: true)
   v(0.5em)
-  text(size: 1.2em)[Lec. #context lec-counter.display()]
+  if counted {
+    text(size: 1.2em)[#resolved-prefix. #context lec-counter.display()]
+  } else {
+    text(size: 1.2em)[#resolved-prefix]
+  }
   v(-0.9em)
   line(length: 100%)
   v(-0.9em)

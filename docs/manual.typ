@@ -14,7 +14,7 @@
 #align(center)[
   #text(size: 24pt, weight: "bold")[study-notes]
   #v(0.3em)
-  #text(size: 14pt, fill: gray)[Package Manual - v0.1.0]
+  #text(size: 14pt, fill: gray)[Package Manual - v0.1.2]
   #v(2em)
 ]
 
@@ -40,7 +40,7 @@ The `study-notes` package provides a Typst template for creating nicely formatte
 Import the package and apply the show rule:
 
 ```typst
-#import "@preview/study-notes:0.1.0": study-notes
+#import "@preview/study-notes:0.1.2": study-notes
 
 #show: study-notes.with(
   title: "My Course Notes",
@@ -107,7 +107,7 @@ On even pages, the layout is mirrored. The footer is suppressed on the cover, cl
 All utility functions are exported from the package entry point and can be imported directly:
 
 ```typst
-#import "@preview/study-notes:0.1.0": mcq, mcqs, mcq-answers, lec, matched-height-grid
+#import "@preview/study-notes:0.1.2": mcq, mcqs, mcq-answers, lec, matched-height-grid
 ```
 
 == MCQ Functions <mcq>
