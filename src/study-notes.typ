@@ -133,7 +133,7 @@
     fill: (x, y) => if (y - 2 * calc.quo(y, 2) == 0) {
       rgb("F5F5F5")
     },
-    inset: (right: 1.5em, left: 1.5em, top: 1em, bottom: 1em),
+    inset: (right: 1em, left: 1em, top: 0.5em, bottom: 0.5em),
     align: horizon + left,
   )
 
