@@ -1,4 +1,4 @@
-#import "@local/study-notes:0.1.3": lec, section, study-notes
+#import "@preview/study-notes:0.1.3": lec, section, study-notes
 
 #show: study-notes.with(
   title: "My Study Notes",
