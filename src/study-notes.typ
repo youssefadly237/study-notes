@@ -38,6 +38,7 @@
 /// - show-toc (bool): Whether to show table of contents. Default: `true`
 /// - toc-depth (int): Depth of table of contents. Default: `2`
 /// - frontmatter (content): Content between cover and TOC (preface, disclaimer). Uses Roman numeral numbering. Default: `[]`
+/// - accent (color): Accent color for heading numbers. Default: `blue`
 /// - content (content): The main document content
 /// -> content
 #let study-notes(
@@ -54,6 +55,7 @@
   show-toc: true,
   toc-depth: 2,
   frontmatter: [],
+  accent: blue,
   content,
 ) = {
   // Document metadata
@@ -68,6 +70,7 @@
   set page(
     paper: paper,
     flipped: flipped,
+    margin: (x: 2.8cm, top: 2.5cm, bottom: 2cm),
     numbering: "i",
     footer: context {
       // Main footer logic
@@ -87,7 +90,9 @@
       let level2 = get-footer-heading(2)
 
       // Only use level2 if it actually belongs to level1
-      let breadcrumb = if level1 != none and level2 != none and is-child-of(level1, level2) {
+      let breadcrumb = if (
+        level1 != none and level2 != none and is-child-of(level1, level2)
+      ) {
         [#level1.body | #truncate-text(level2.body)]
       } else if level1 != none {
         level1.body
@@ -103,18 +108,45 @@
   )
 
   // Heading setup
-  set heading(bookmarked: true, outlined: true, numbering: (..nums) => {
-    let levels = nums.pos()
-    if levels.len() >= 3 {
-      let local-levels = levels.slice(2)
-      numbering("1.1.1.", ..local-levels)
+  set heading(
+    bookmarked: true,
+    outlined: true,
+    hanging-indent: 0pt,
+    numbering: (..nums) => {
+      let levels = nums.pos()
+      if levels.len() >= 3 {
+        let local-levels = levels.slice(2)
+        let n = local-levels.len()
+        if n == 1 { numbering("1", ..local-levels) } else if n == 2 {
+          numbering("1.1", ..local-levels)
+        } else { numbering("1.1.1", ..local-levels) }
+      }
+    },
+  )
+  show heading: it => {
+    if it.level == 1 {
+      set align(center)
+      v(0.5em)
+      it
+      v(0.3em)
+    } else if it.numbering != none {
+      let color = text(fill: accent, counter(heading).display(it.numbering))
+      if it.level <= 6 {
+        set align(left)
+        set par(justify: false)
+        let size = (1.2em, 1.1em, 1em).at(calc.clamp(it.level - 2, 0, 2))
+        set text(size: size)
+        block(place(left, dx: -12mm, align(left, color)) + it.body)
+        v((0.9em, 0.8em, 0.6em).at(calc.clamp(it.level - 2, 0, 2)), weak: true)
+      } else {
+        set text(size: 0.95em)
+        color
+        h(0.5em)
+        it.body
+      }
+    } else {
+      it
     }
-  })
-  show heading.where(level: 1): it => {
-    set align(center)
-    v(0.5em)
-    it
-    v(0.3em)
   }
 
   // List & enum setup
@@ -136,6 +168,9 @@
     inset: (right: 1em, left: 1em, top: 0.5em, bottom: 0.5em),
     align: horizon + left,
   )
+
+  // Math setup
+  set math.frac(style: "skewed")
 
   // Quote setup
   set quote(block: true)

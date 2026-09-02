@@ -1,15 +1,14 @@
 # The `study-notes` Package
 
-<div align="center">Version 0.1.2</div>
-
-A Typst template for making nicely formatted study notes with a cover page, table of contents, breadcrumb footer navigation, MCQ utilities, and more.
+A Typst template for making nicely formatted study notes with a cover page,
+table of contents, breadcrumb footer navigation, MCQ utilities, and more.
 
 ## Getting Started
 
 Import the package and apply the template show rule:
 
 ```typ
-#import "@preview/study-notes:0.1.2": study-notes
+#import "@preview/study-notes:0.1.3": study-notes
 
 #show: study-notes.with(
   title: "My Course Notes",
@@ -30,19 +29,21 @@ Your content here...
 
 Install locally for development:
 
-```
-$ just install
+```bash
+just install
 ```
 
 Or use directly from the Typst package registry:
 
 ```typ
-#import "@preview/study-notes:0.1.2": study-notes
+#import "@preview/study-notes:0.1.3": study-notes
 ```
 
 ## Usage
 
 ### Template Parameters
+
+<!-- markdownlint-disable MD013 -->
 
 | Parameter      | Type     | Default            | Description                                    |
 | -------------- | -------- | ------------------ | ---------------------------------------------- |
@@ -59,12 +60,14 @@ Or use directly from the Typst package registry:
 | `show-toc`     | bool     | `true`             | Show table of contents                         |
 | `toc-depth`    | int      | `2`                | Depth of table of contents                     |
 
+<!-- markdownlint-enable MD013 -->
+
 ### MCQ Utilities
 
 Create multiple choice questions:
 
 ```typ
-#import "@preview/study-notes:0.1.2": mcq, mcqs, mcq-answers
+#import "@preview/study-notes:0.1.3": mcq, mcqs, mcq-answers
 
 #mcq([What is 2+2?], ([2], [3], [4], [5]))
 
@@ -81,7 +84,7 @@ Create multiple choice questions:
 Auto-numbered lecture headings per subject:
 
 ```typ
-#import "@preview/study-notes:0.1.2": lec
+#import "@preview/study-notes:0.1.3": lec
 
 #lec("Anatomy", "Oral Cavity and Pharynx")
 // Renders weak pagebreak, "Lec. 1" text, horizontal rule, level-2 heading
@@ -95,7 +98,7 @@ Auto-numbered lecture headings per subject:
 Full-page section dividers with centered title and optional mini-TOC:
 
 ```typ
-#import "@preview/study-notes:0.1.2": section
+#import "@preview/study-notes:0.1.3": section
 
 #section("Gastrointestinal System")
 // Full-page divider with title and mini-TOC
@@ -109,24 +112,24 @@ Full-page section dividers with centered title and optional mini-TOC:
 
 ### Margin Notes
 
-Place a short label in the left margin aligned to the current line:
+Wraps content in a block and places a small badge in the margin:
 
 ```typ
-#import "@preview/study-notes:0.1.2": nb
+#import "local/study-notes:0.1.3": nb
 
-#nb[imp] This is an important note.
+#nb[imp][This is an important note.]
 
-#nb[!, shape: "square", fill: red] Warning text here.
+#nb(shape: "square", fill: red)[!][Warning text here.]
 
-#nb[C99, shape: "circle"] Label in a circle.
+#nb(shape: "circle")[C99][Label in a circle.]
 ```
 
 ### Layout Utilities
 
 ```typ
-#import "@preview/study-notes:0.1.2": matched-height-grid
+#import "@local/study-notes:0.1.3": side-by-side
 
-#matched-height-grid(
+#side-by-side(
   [Some text content on the left],
   image("figure.png"),
   columns: (2fr, 1fr),

@@ -46,7 +46,7 @@ There are three types of muscle tissue:
 
 Epithelial tissue lines body surfaces and cavities.
 
-#matched-height-grid(
+#side-by-side(
   [
     *Types of epithelium:*
     - Simple squamous
@@ -68,11 +68,25 @@ Epithelial tissue lines body surfaces and cavities.
 
 #mcqs(
   (
-    ([Which bone is the longest in the human body?], ([Tibia], [Femur], [Humerus], [Fibula])),
-    ([Which muscle type is involuntary and striated?], ([Skeletal], [Smooth], [Cardiac], [None])),
     (
-      [What type of epithelium lines the alveoli?],
-      ([Simple cuboidal], [Simple squamous], [Stratified squamous], [Transitional]),
+      question: [Which bone is the longest in the human body?],
+      choices: ([Tibia], [Femur], [Humerus], [Fibula]),
+      answer: "B",
+    ),
+    (
+      question: [Which muscle type is involuntary and striated?],
+      choices: ([Skeletal], [Smooth], [Cardiac], [None]),
+      answer: "C",
+    ),
+    (
+      question: [What type of epithelium lines the alveoli?],
+      choices: (
+        [Simple cuboidal],
+        [Simple squamous],
+        [Stratified squamous],
+        [Transitional],
+      ),
+      answer: "B",
     ),
   ),
   title: [*Section A: Multiple Choice*],
@@ -82,13 +96,15 @@ Epithelial tissue lines body surfaces and cavities.
 
 = Summary
 
-#nb[imp] These notes covered:
-+ The skeletal system and bone classification
-+ Muscle tissue types and their properties
-+ Epithelial tissue classification
-+ Practice MCQs with answer keys
+#nb[imp][
+  These notes covered:
+  + The skeletal system and bone classification
+  + Muscle tissue types and their properties
+  + Epithelial tissue classification
+  + Practice MCQs with answer keys
 
-$ "Total bones" = 206 quad "Muscle types" = 3 $
+  $ "Total bones" = 206 quad "Muscle types" = 3 $
+]
 
 
 #section("Other", toc-depth: 4)
@@ -97,19 +113,13 @@ $ "Total bones" = 206 quad "Muscle types" = 3 $
 
 === A section
 
-#nb[nb] This is some text
+#nb[nb][This is some text]
 
 
 
 ==== Sub section
 
-#nb[nb] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id nisi
-aliquet, ullamcorper justo ac, porta odio. Nam sed condimentum ligula, eu
-fringilla lectus. Suspendisse tincidunt sollicitudin ligula, at ornare urna
-convallis eget. Integer auctor ornare velit ut placerat. Nunc id purus sit amet
-elit facilisis placerat. Suspendisse potenti. Donec non sapien sed ex rutrum luctus
-in nec eros. Sed accumsan tellus eget volutpat pulvinar. Maecenas varius odio eget
-erat maximus blandit. Nam quis luctus purus.
+#nb[nb][#lorem(50)]
 
 #lec("Other", "Other fancy title")
 

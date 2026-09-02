@@ -1,6 +1,6 @@
 [package]
 name = "study-notes"
-version = "0.1.2"
+version = "0.1.3"
 entrypoint = "src/lib.typ"
 authors = ["J. Adly <youssefadly237@gmail.com>"]
 license = "MIT-0"

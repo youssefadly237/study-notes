@@ -1,4 +1,4 @@
-#import "@preview/study-notes:0.1.2": study-notes
+#import "@local/study-notes:0.1.3": lec, section, study-notes
 
 #show: study-notes.with(
   title: "My Study Notes",
@@ -12,10 +12,15 @@
 
 // Your content here
 
-= Introduction
+#section([Introduction])
+
+#lec("Introduction", "First lecture")
 
 This is a sample document using the study-notes template.
 
-= First Section
+#section([2#super[nd]section])
+
+#lec("Idk", "lecture")
+
 
 Your content goes here.

@@ -7,14 +7,24 @@
 #set par(justify: true)
 
 #show link: underline
-#show raw.where(block: true): set block(fill: luma(245), inset: 1em, radius: 4pt, width: 100%)
-#show raw.where(block: false): set box(fill: luma(245), inset: (x: 3pt), outset: (y: 3pt), radius: 2pt)
+#show raw.where(block: true): set block(
+  fill: luma(245),
+  inset: 1em,
+  radius: 4pt,
+  width: 100%,
+)
+#show raw.where(block: false): set box(
+  fill: luma(245),
+  inset: (x: 3pt),
+  outset: (y: 3pt),
+  radius: 2pt,
+)
 
 // Title
 #align(center)[
   #text(size: 24pt, weight: "bold")[study-notes]
   #v(0.3em)
-  #text(size: 14pt, fill: gray)[Package Manual - v0.1.2]
+  #text(size: 14pt, fill: gray)[Package Manual - v0.1.3]
   #v(2em)
 ]
 
@@ -40,7 +50,7 @@ The `study-notes` package provides a Typst template for creating nicely formatte
 Import the package and apply the show rule:
 
 ```typst
-#import "@preview/study-notes:0.1.2": study-notes
+#import "@preview/study-notes:0.1.3": study-notes
 
 #show: study-notes.with(
   title: "My Course Notes",
@@ -67,16 +77,39 @@ The `study-notes` function accepts the following named parameters:
   table.header([*Parameter*], [*Type*], [*Default*], [*Description*]),
   [`title`], [`content`], [`[]`], [Document title displayed on the cover page.],
   [`author`], [`content`], [`[]`], [Author name(s) shown on the cover page.],
-  [`email`], [`content`], [`none`], [Author email. When provided, the author name becomes a `mailto:` link.],
-  [`description`], [`content`], [`[]`], [Document description for PDF metadata.],
+  [`email`],
+  [`content`],
+  [`none`],
+  [Author email. When provided, the author name becomes a `mailto:` link.],
+
+  [`description`],
+  [`content`],
+  [`[]`],
+  [Document description for PDF metadata.],
+
   [`keywords`], [`array`], [`()`], [Array of keyword strings for PDF metadata.],
-  [`date`], [`datetime`], [`datetime.today()`], [Document date shown on the cover.],
+  [`date`],
+  [`datetime`],
+  [`datetime.today()`],
+  [Document date shown on the cover.],
+
   [`paper`], [`str`], [`"a4"`], [Paper size (any Typst paper size string).],
   [`flipped`], [`bool`], [`false`], [Whether to use landscape orientation.],
-  [`quote-text`], [`content`], [`[]`], [Quote text for the closing page. No closing page is generated if empty.],
-  [`quote-author`], [`content`], [`[]`], [Attribution for the closing page quote.],
+  [`quote-text`],
+  [`content`],
+  [`[]`],
+  [Quote text for the closing page. No closing page is generated if empty.],
+
+  [`quote-author`],
+  [`content`],
+  [`[]`],
+  [Attribution for the closing page quote.],
+
   [`show-toc`], [`bool`], [`true`], [Whether to show a table of contents.],
-  [`toc-depth`], [`int`], [`2`], [Maximum heading depth shown in the table of contents.],
+  [`toc-depth`],
+  [`int`],
+  [`2`],
+  [Maximum heading depth shown in the table of contents.],
 )
 
 = Document Structure
@@ -107,7 +140,7 @@ On even pages, the layout is mirrored. The footer is suppressed on the cover, cl
 All utility functions are exported from the package entry point and can be imported directly:
 
 ```typst
-#import "@preview/study-notes:0.1.2": mcq, mcqs, mcq-answers, lec, matched-height-grid
+#import "@preview/study-notes:0.1.3": mcq, mcqs, mcq-answers, lec, side-by-side
 ```
 
 == MCQ Functions <mcq>
@@ -135,7 +168,11 @@ Creates multiple numbered MCQs in sequence.
   columns: (auto, auto, auto, 1fr),
   table.header([*Parameter*], [*Type*], [*Default*], [*Description*]),
   [`questions`], [`array`], [-], [Array of `(question, answers)` pairs.],
-  [`title`], [`content`], [`[]`], [Optional title displayed above the questions.],
+  [`title`],
+  [`content`],
+  [`[]`],
+  [Optional title displayed above the questions.],
+
   [`start`], [`int`], [`1`], [Starting number for question numbering.],
 )
 
@@ -172,7 +209,10 @@ Creates an auto-numbered level-2 heading prefixed with "Lec. N". Each subject ma
 #table(
   columns: (auto, auto, 1fr),
   table.header([*Parameter*], [*Type*], [*Description*]),
-  [`subject`], [`str`], [Subject name used to track the counter (e.g., `"Anatomy"`).],
+  [`subject`],
+  [`str`],
+  [Subject name used to track the counter (e.g., `"Anatomy"`).],
+
   [`title`], [`content`], [The lecture title.],
 )
 
@@ -191,7 +231,7 @@ Creates an auto-numbered level-2 heading prefixed with "Lec. N". Each subject ma
 
 == Layout Utilities <layout>
 
-=== `matched-height-grid(left, right, columns: (2fr, 1fr))`
+=== `side-by-side(left, right, columns: (2fr, 1fr))`
 
 Places two pieces of content side by side, with the right column's height matched to the left column.
 
@@ -199,12 +239,16 @@ Places two pieces of content side by side, with the right column's height matche
   columns: (auto, auto, auto, 1fr),
   table.header([*Parameter*], [*Type*], [*Default*], [*Description*]),
   [`left`], [`content`], [-], [Left column content.],
-  [`right`], [`content`], [-], [Right column content (vertically centred, height matched to left)],
+  [`right`],
+  [`content`],
+  [-],
+  [Right column content (vertically centred, height matched to left)],
+
   [`columns`], [`array`], [`(2fr, 1fr)`], [Column width fractions.],
 )
 
 ```typst
-#matched-height-grid(
+#side-by-side(
   [Some longer text content that spans
    multiple lines on the left side.],
   rect(fill: blue.lighten(80%), [Figure]),
@@ -223,12 +267,21 @@ These functions are exported but are primarily used internally by the template. 
   [`hidden-heading(label, body)`],
   [Creates a heading that is hidden from display but present in the document structure.],
 
-  [`blank-page()`], [Inserts a centred "This page is left blank intentionally." with a `<BlankPage>` label.],
-  [`has-label-on-page(label, page)`], [Checks whether a label exists on a given page number.],
-  [`get-last-heading(level)`], [Returns the last heading of a given level before the current position.],
+  [`blank-page()`],
+  [Inserts a centred "This page is left blank intentionally." with a `<BlankPage>` label.],
+
+  [`has-label-on-page(label, page)`],
+  [Checks whether a label exists on a given page number.],
+
+  [`get-last-heading(level)`],
+  [Returns the last heading of a given level before the current position.],
+
   [`is-child-of(h1, h2)`], [Checks if `h2` appears on or after `h1`'s page.],
-  [`truncate-text(content, max-len: 50)`], [Truncates text to `max-len` characters with ellipsis.],
-  [`format-footer(left, right)`], [Formats footer with alternating odd/even page layout.],
+  [`truncate-text(content, max-len: 50)`],
+  [Truncates text to `max-len` characters with ellipsis.],
+
+  [`format-footer(left, right)`],
+  [Formats footer with alternating odd/even page layout.],
 )
 
 = License
