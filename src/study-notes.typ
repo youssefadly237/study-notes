@@ -168,6 +168,8 @@
     inset: (right: 1em, left: 1em, top: 0.5em, bottom: 0.5em),
     align: horizon + left,
   )
+  show table.cell: set list(indent: 0pt)
+  show table.cell: set enum(indent: 0pt)
 
   // Math setup
   set math.frac(style: "skewed")
