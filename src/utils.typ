@@ -11,7 +11,7 @@ Utils
 /// -> content
 #let hidden-heading(label-name, body) = {
   show heading.where(label: label-name): none
-  [#heading(body)#label-name]
+  [#heading(level: 1, numbering: none)[#body]#label-name]
 }
 
 /// Creates a centered blank page

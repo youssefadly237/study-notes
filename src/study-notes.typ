@@ -203,7 +203,10 @@
 
   pagebreak()
 
-  frontmatter
+  {
+    set heading(numbering: none, hanging-indent: 0pt)
+    frontmatter
+  }
 
   // Table of Contents
   if show-toc {

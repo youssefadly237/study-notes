@@ -68,9 +68,11 @@ Layout
   v(-0.9em)
   line(length: 100%)
   v(-0.9em)
-  show heading.where(level: 2): set heading(hanging-indent: 0pt)
-  show heading.where(level: 2): set text(size: 1.4em)
-  heading(level: 2, outlined: true, bookmarked: true)[#title]
+  {
+    set heading(numbering: none, hanging-indent: 0pt)
+    show heading.where(level: 2): set text(size: 1.4em)
+    heading(level: 2, outlined: true, bookmarked: true)[#title]
+  }
   v(1em)
 }
 
@@ -97,8 +99,11 @@ Layout
   [#metadata(title)<section-anchor>]
   page(margin: (x: 3cm, y: 4cm))[
     #align(center + horizon)[
-      #show heading.where(level: 1): set text(size: 3em)
-      #heading(level: 1, outlined: true)[#title]
+      #{
+        set heading(numbering: none, hanging-indent: 0pt)
+        show heading.where(level: 1): set text(size: 3em)
+        heading(level: 1, outlined: true)[#title]
+      }
       #if show-toc [
         #v(2em)
         #context {
@@ -196,5 +201,3 @@ Layout
     dy: center.at(1) - size.height / 2,
   )[#label])
 }
-
-
