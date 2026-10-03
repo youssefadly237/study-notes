@@ -120,11 +120,14 @@ MCQ
 #let mcqs(questions, title: [], start: 1, breakable: false) = {
   _validate-questions(questions, start)
   title
-  for (idx, q) in questions.enumerate() {
-    block(breakable: breakable)[
-      #numbering("1.", start + idx) #mcq(q.question, q.choices)
-    ]
-  }
+  enum(
+    start: start,
+    numbering: "1.",
+    ..questions.map(q => block(breakable: breakable)[#mcq(
+      q.question,
+      q.choices,
+    )]),
+  )
 }
 
 /// Displays MCQ answers in a multi-column layout

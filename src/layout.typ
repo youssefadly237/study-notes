@@ -71,6 +71,7 @@ Layout
   {
     set heading(numbering: none, hanging-indent: 0pt)
     show heading.where(level: 2): set text(size: 1.4em)
+    counter(heading).step(level: 2)
     heading(level: 2, outlined: true, bookmarked: true)[#title]
   }
   v(1em)
@@ -102,6 +103,7 @@ Layout
       #{
         set heading(numbering: none, hanging-indent: 0pt)
         show heading.where(level: 1): set text(size: 3em)
+        counter(heading).step(level: 1)
         heading(level: 1, outlined: true)[#title]
       }
       #if show-toc [
